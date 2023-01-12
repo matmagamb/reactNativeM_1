@@ -23,7 +23,8 @@ import { StyleSheet } from "react-native";
     color: '#fff',
     padding:16,
     fontSize:16, 
-    marginTop:16,
+    flex:1,
+    marginRight:12,
   },
   buttonText:{
     color:"#fff",
@@ -35,7 +36,12 @@ import { StyleSheet } from "react-native";
     borderRadius:5,
     backgroundColor: "#31cf67",
     alignItems: "center",
-    justifyContent:"center"
-
+    justifyContent:"center",
+  },
+  form: {
+    width: '100%',
+    flexDirection:"row",
+    marginTop:36,
+    marginBottom:42,
   }
 });
