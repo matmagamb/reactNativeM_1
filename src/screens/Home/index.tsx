@@ -11,17 +11,18 @@ import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
 export function Home() {
-  const [participants, setParticipants] = useState(["1"]);
+  const [participants, setParticipants] = useState<string[]>([]);
+  const [participantName, setParticipantName] = useState("");
 
   function HandleParicipantAdd() {
-    console.log(participants);
-    if (participants.includes("10")) {
+    if (participants.includes(participantName)) {
       return Alert.alert(
         "participante ja criado",
         "Ja existe um participante na lista com esse nome "
       );
     }
-    setParticipants((prevState) => [...prevState, "2"]);
+    setParticipants((prevState) => [...prevState, participantName]);
+    setParticipantName("");
   }
 
   function HandleParicipantRemove(name: string) {
@@ -43,6 +44,8 @@ export function Home() {
       <Text style={styles.eventDate}>Data do evento</Text>
       <View style={styles.form}>
         <TextInput
+          value={participantName}
+          onChangeText={(e) => setParticipantName(e)}
           style={styles.input}
           placeholder="nome do participante"
           placeholderTextColor="#6b6b6b"
