@@ -1,54 +1,42 @@
+import { useState } from "react";
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
-  ScrollView,
   FlatList,
   Alert,
 } from "react-native";
 import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
-function HandleParicipantAdd() {
-  if (participants.includes("1")) {
-    return Alert.alert(
-      "participante ja criado",
-      "Ja existe um participante na lista com esse nome "
-    );
-  }
-}
-function HandleParicipantRemove(name: string) {
-  Alert.alert("Remover", `remover o participant ${name}?`, [
-    {
-      text: "Sim",
-      onPress: () => Alert.alert("Deletado!"),
-    },
-    {
-      text: "Não",
-      style: "cancel",
-    },
-  ]);
-}
-
-const participants = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "11",
-  "12",
-  "13",
-  "14",
-];
-
 export function Home() {
+  const [participants, setParticipants] = useState(["1"]);
+
+  function HandleParicipantAdd() {
+    console.log(participants);
+    if (participants.includes("10")) {
+      return Alert.alert(
+        "participante ja criado",
+        "Ja existe um participante na lista com esse nome "
+      );
+    }
+    setParticipants((prevState) => [...prevState, "2"]);
+  }
+
+  function HandleParicipantRemove(name: string) {
+    Alert.alert("Remover", `remover o participant ${name}?`, [
+      {
+        text: "Sim",
+        onPress: () => Alert.alert("Deletado!"),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.eventName}>nome do evento</Text>
