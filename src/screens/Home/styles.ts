@@ -43,5 +43,10 @@ import { StyleSheet } from "react-native";
     flexDirection:"row",
     marginTop:36,
     marginBottom:42,
+  },
+  ListEmptyText:{
+    fontSize:14,
+    color:'#fff',
+    textAlign:'center'
   }
 });
