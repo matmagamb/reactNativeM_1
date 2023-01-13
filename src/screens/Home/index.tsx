@@ -5,15 +5,30 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
+  Alert,
 } from "react-native";
 import { Participant } from "../../components/Participant";
 import { styles } from "./styles";
 
 function HandleParicipantAdd() {
-  console.log("vc adicionou um participante ");
+  if (participants.includes("1")) {
+    return Alert.alert(
+      "participante ja criado",
+      "Ja existe um participante na lista com esse nome "
+    );
+  }
 }
 function HandleParicipantRemove(name: string) {
-  console.log(`"vc removeu um participante ${name}"`);
+  Alert.alert("Remover", `remover o participant ${name}?`, [
+    {
+      text: "Sim",
+      onPress: () => Alert.alert("Deletado!"),
+    },
+    {
+      text: "Não",
+      style: "cancel",
+    },
+  ]);
 }
 
 const participants = [
