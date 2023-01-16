@@ -14,18 +14,23 @@ export function Home() {
   const [participants, setParticipants] = useState<string[]>([]);
   const [participantName, setParticipantName] = useState("");
 
-  function HandleParicipantAdd() {
+  function HandleParticipantAdd() {
     if (participants.includes(participantName)) {
       return Alert.alert(
         "participante ja criado",
         "Ja existe um participante na lista com esse nome "
+      );
+    } else if (participantName === "") {
+      return Alert.alert(
+        "digite um nome ",
+        "o campo não pode ser vazio, digite um nome "
       );
     }
     setParticipants((prevState) => [...prevState, participantName]);
     setParticipantName("");
   }
 
-  function HandleParicipantRemove(name: string) {
+  function HandleParticipantRemove(name: string) {
     Alert.alert("Remover", `remover o participant ${name}?`, [
       {
         text: "Sim",
@@ -50,7 +55,7 @@ export function Home() {
           placeholder="nome do participante"
           placeholderTextColor="#6b6b6b"
         />
-        <TouchableOpacity style={styles.button} onPress={HandleParicipantAdd}>
+        <TouchableOpacity style={styles.button} onPress={HandleParticipantAdd}>
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
@@ -62,7 +67,7 @@ export function Home() {
           <Participant
             name={item}
             key={item}
-            onRemove={() => HandleParicipantRemove(item)}
+            onRemove={() => HandleParticipantRemove(item)}
           />
         )}
         ListEmptyComponent={() => (
